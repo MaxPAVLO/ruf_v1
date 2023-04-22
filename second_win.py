@@ -2,14 +2,20 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QLabel, QLineEdit, QVBoxLayout, QHBoxLayout
 from instr import *
 from final_win import FinalWin
-app = QApplication([])
 
 class TestWin(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.set_appear()
+        self.initUI()
+        self.connects()
+        self.show()
+
     def set_appear(self):
         #Заголовок, место и размеры окна
         self.resize(win_width, win_height)
         self.setWindowTitle("Тест Руфье")
-        self.move(win_X, win_y)
+        self.move(win_x, win_y)
 
     def initUI(self):
         #Имя пользователя
@@ -33,7 +39,7 @@ class TestWin(QWidget):
         self.instructionThirdLabel = QLabel(InstructionThird)
         self.thirdButton = QPushButton(ThirdButtonText)
         self.thirdTaskInput1 = QLineEdit()
-        self.thirdTaskInput2 - QLineEdit()
+        self.thirdTaskInput2 = QLineEdit()
 
         self.sendButton = QPushButton(sendButtonText)
 
@@ -81,21 +87,9 @@ class TestWin(QWidget):
         #Позиционирование главного лайаута на экране
         self.setLayout(self.mainLayout)
 
-
     def connects(self):
         self.sendButton.clicked.connect(self.next_click)
 
     def next_click(self):
         self.hide()
-        self.fw = FinalWin() 
-
-    def __init__(self):
-        super().__init__()
-        self.set_appear()
-        self.initUI()
-        self.connects()
-        self.show()
-
-popa = TestWin()
-
-app.exec_()
+        self.fw = FinalWin()
