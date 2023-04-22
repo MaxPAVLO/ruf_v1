@@ -90,5 +90,7 @@ class TestWin(QWidget):
         self.initUI()
         self.connects()
         self.show()
+        
+popa = TestWin()
 
 app.exec_()
