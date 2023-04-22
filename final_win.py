@@ -1,14 +1,19 @@
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QLabel, QLineEdit, QVBoxLayout, QHBoxLayout
 from instr import *
-app = QApplication([])
 
 class FinalWin(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.set_appear()
+        self.initUI()
+        self.show()
+
     def set_appear(self):
         #Заголовок, место и размеры окна
         self.resize(win_width, win_height)
         self.setWindowTitle("Тест Руфье")
-        self.move(win_X, win_y)
+        self.move(win_x, win_y)
 
     def initUI(self):
         #Создание главного лайаута, индекс Руфье, итог
@@ -22,11 +27,3 @@ class FinalWin(QWidget):
 
         #Позиционирование главного лайаута на экране
         self.setLayout(self.mainLayout)
-
-    def __init__(self):
-        super().__init__()
-        self.set_appear()
-        self.initUI()
-        self.show()
-
-app.exec_()
