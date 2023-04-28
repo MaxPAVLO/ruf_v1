@@ -1,6 +1,7 @@
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton,QLabel, QVBoxLayout
 from instr import *
+from second_win import *
 class main_win(QWidget):
     def __init__(self):
         def set_appear(self):
@@ -22,9 +23,8 @@ class main_win(QWidget):
             self.button.clicked.connect(self.next_click)
         def next_click(self):
             self.hide()
-            self.sw = second_win()
-        def show(self):
-            pass
+            self.tw = Test_Win()
+        def show(self)
         super().__init__()
         self.set_appear()
         self.initUI()
