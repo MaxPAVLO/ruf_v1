@@ -1,5 +1,6 @@
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QTime, QTimer
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QLabel, QLineEdit, QVBoxLayout, QHBoxLayout
+from PyQt5.QtGui import QFont
 from instr import *
 from final_win import FinalWin
 
@@ -14,7 +15,7 @@ class TestWin(QWidget):
     def set_appear(self):
         #Заголовок, место и размеры окна
         self.resize(win_width, win_height)
-        self.setWindowTitle("Тест Руфье")
+        self.setWindowTitle(title_txt)
         self.move(win_x, win_y)
 
     def initUI(self):
@@ -80,6 +81,7 @@ class TestWin(QWidget):
 
         #Создание таймера
         self.timer = QLabel(timerText)
+        self.timer.setFont(QFont("Times", 36, QFont.Bold))
 
         #Добавление виджетов на второй лайаут
         self.secondLayout.addWidget(self.timer, alignment = Qt.AlignCenter)
@@ -89,6 +91,47 @@ class TestWin(QWidget):
 
     def connects(self):
         self.sendButton.clicked.connect(self.next_click)
+        self.firstButton.clicked.connect(self.timerTest1)
+        self.secondButton.clicked.connect(self.timerTest2)
+        self.thirdButton.clicked.connect(self.timerTest3)
+
+    def timerTest1(self):
+        global Time
+        Time = QTime(0, 0, 15)
+        self.Timer = QTimer()
+        self.Timer.timeout.connect(self.timer1Event)
+        self.Timer.start(1000)
+
+    def timerTest2(self):
+        global Time
+        Time = QTime(0, 0, 30)
+        self.timer.setText("30")
+        self.Timer.timeout.connect(self.timer2Event)
+        self.Timer.start(1500)
+
+    def timerTest3(self):
+        global Time
+        Time = QTime(0, 1, 0)
+        self.Timer.timeout.connect(self.timer3Event)
+
+    def timer1Event(self):
+        global Time
+        Time = Time.addSecs(-1)
+        self.timer.setText(Time.toString("hh:mm:ss"))
+
+        if Time.toString("hh:mm:ss") == "00:00:00":
+            self.Timer.stop()
+
+    def timer2Event(self):
+        global Time
+        Time = Time.addSecs(-1)
+        self.timer.setText(Time.toString("00:00:00")[6:])
+
+        if Time.toString("hh:mm:ss")[6:] == "00":
+            self.Timer.stop()
+
+    def timer3Event(self):
+        pass
 
     def next_click(self):
         self.hide()
