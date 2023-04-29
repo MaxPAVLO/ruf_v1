@@ -5,7 +5,6 @@ win_width, win_height = 1920, 1080
 greet_instuction = 'Этот тест позволит вам определить насколько здорово живёт ваше сердечко'
 fin_btn_txt = 'Дальше'
 
-
 #Second window
 surname = 'Введите ваше Ф.И.О.'
 years = 'Сколько вам полных лет?'
