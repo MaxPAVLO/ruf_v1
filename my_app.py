@@ -11,7 +11,7 @@ class MainWin(QWidget):
         self.initUI()
         self.connects()
         self.show()
-
+        
     def set_appear(self):
         self.move(win_x, win_y)
         self.setWindowTitle(title_txt)

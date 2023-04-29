@@ -1,6 +1,8 @@
 greet = 'Приветствую'
 title_txt = 'Тест Руфье'
-win_x, win_y = 0,0
+
+win_X, win_y = 0,0
+
 win_width, win_height = 1920, 1080
 greet_instuction = 'Этот тест позволит вам определить насколько здорово живёт ваше сердечко'
 fin_btn_txt = 'Дальше'
