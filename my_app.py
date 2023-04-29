@@ -2,7 +2,7 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton,QLabel, QVBoxLayout
 from instr import *
 from second_win import TestWin
-app = QApplication([])
+app = QApplication([])   
 
 class MainWin(QWidget):
     def __init__(self):
@@ -11,7 +11,7 @@ class MainWin(QWidget):
         self.initUI()
         self.connects()
         self.show()
-        
+
     def set_appear(self):
         self.move(win_x, win_y)
         self.setWindowTitle(title_txt)
