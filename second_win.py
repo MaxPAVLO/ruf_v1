@@ -4,6 +4,13 @@ from PyQt5.QtGui import QFont
 from instr import *
 from final_win import FinalWin
 
+class Experiment():
+    def __init__(self, age, test1, test2, test3):
+        self.age = int(age)
+        self.t1 = int(test1)
+        self.t2 = int(test2)
+        self.t3 = int(test3)
+
 class TestWin(QWidget):
     def __init__(self):
         super().__init__()
@@ -81,7 +88,7 @@ class TestWin(QWidget):
 
         #Создание таймера
         self.timer = QLabel(timerText)
-        self.timer.setFont(QFont("Times", 36, QFont.Bold))
+        self.timer.setFont(QFont("Times", 27, QFont.Bold))
 
         #Добавление виджетов на второй лайаут
         self.secondLayout.addWidget(self.timer, alignment = Qt.AlignCenter)
@@ -112,7 +119,10 @@ class TestWin(QWidget):
     def timerTest3(self):
         global Time
         Time = QTime(0, 1, 0)
+        self.timer.setText("00:01:00")
+        self.timer.setStyleSheet("color:rgb(25,255,25)")
         self.Timer.timeout.connect(self.timer3Event)
+        self.Timer.start(1000)
 
     def timer1Event(self):
         global Time
@@ -124,15 +134,29 @@ class TestWin(QWidget):
 
     def timer2Event(self):
         global Time
-        Time = Time.addSecs(-1)
-        self.timer.setText(Time.toString("00:00:00")[6:])
+        Time = Time.addSecs(-0.5)
+        self.timer.setText(Time.toString("hh:mm:ss")[6:])
 
-        if Time.toString("hh:mm:ss")[6:] == "00":
+        if Time.toString("hh:mm:ss") == "00:00:00":
             self.Timer.stop()
 
     def timer3Event(self):
-        pass
+        global Time
+        Time = Time.addSecs(-0.5)
+        
+        if int(Time.toString("hh:mm:ss")[6:]) >= 45 or int(Time.toString("hh:mm:ss")[6:]) <= 15:
+            self.timer.setStyleSheet("color:rgb(25,255,25)")
+
+        else:
+            self.timer.setStyleSheet("color:rgb(0,0,0)")
+
+        self.timer.setText(Time.toString("hh:mm:ss"))
+
+        if Time.toString("hh:mm:ss") == "00:00:00":
+            self.Timer.stop()
 
     def next_click(self):
+        exp = Experiment(self.userYearsInput.text(), self.firstTaskInput.text(), self.thirdTaskInput1.text(), self.thirdTaskInput2.text())
+
         self.hide()
-        self.fw = FinalWin()
+        self.fw = FinalWin(exp)
