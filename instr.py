@@ -17,7 +17,6 @@ ThirdButtonText = 'Начать третий тест'
 timerText = "00:00:15"
 sendButtonText = 'Подвести итоги'
 
-
 #Third window
 index = 'Индекс Руфье:'
 result = 'Работоспособность вашего сердца:'
