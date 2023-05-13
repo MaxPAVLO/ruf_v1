@@ -16,7 +16,7 @@ class FinalWin(QWidget):
         self.indexRuf = (4 * (self.exp.t1 + self.exp.t2 + self.exp.t3) - 200) / 10
         self.finalResult = ""
         usersAge = self.exp.age
-        if 7 <= usersAge >= 8:
+        if 7 <= usersAge <= 8:
             if self.indexRuf >= 21:
                 self.finalResult = txt_res1
             elif 17 <= self.indexRuf <= 20.9:
@@ -28,7 +28,7 @@ class FinalWin(QWidget):
             elif self.indexRuf <= 6.4:
                 self.finalResult = txt_res5
 
-        if 9 <= usersAge >= 10:
+        if 9 <= usersAge <= 10:
             if self.indexRuf >= 19.5:
                 self.finalResult = txt_res1
             elif 15.5 <= self.indexRuf <= 19.4:
@@ -40,7 +40,7 @@ class FinalWin(QWidget):
             elif self.indexRuf <= 4.9:
                 self.finalResult = txt_res5
 
-        if 11 <= usersAge >= 12:
+        if 11 <= usersAge <= 12:
             if self.indexRuf >= 18:
                 self.finalResult = txt_res1
             elif 14 <= self.indexRuf <= 17.9:
@@ -52,7 +52,7 @@ class FinalWin(QWidget):
             elif self.indexRuf <= 3.4:
                 self.finalResult = txt_res5
 
-        if 13 <= usersAge >= 14:
+        if 13 <= usersAge <= 14:
             if self.indexRuf >= 16.5:
                 self.finalResult = txt_res1
             elif 12.5 <= self.indexRuf <= 16.4:
