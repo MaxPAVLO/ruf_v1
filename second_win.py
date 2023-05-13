@@ -14,6 +14,7 @@ class Experiment():
 class TestWin(QWidget):
     def __init__(self):
         super().__init__()
+        self.timesWarn = 0
         self.set_appear()
         self.initUI()
         self.connects()
@@ -146,6 +147,11 @@ class TestWin(QWidget):
             self.fw = FinalWin(exp)
 
         except:
-            warnText = QLabel("Вводите только цифры в поля ввода")
-            warnText.setFont(QFont("Times", 16, QFont.Bold))
-            self.secondLayout.addWidget(warnText, alignment = Qt.AlignRight)
+            if self.timesWarn >= 1:
+                self.warnText.setStyleSheet("color:rgb(150,0,24)")
+
+            else:
+                self.timesWarn += 1
+                self.warnText = QLabel("Вводите только цифры в поля ввода")
+                self.warnText.setFont(QFont("Times", 16, QFont.Bold))
+                self.secondLayout.addWidget(self.warnText, alignment = Qt.AlignRight)
